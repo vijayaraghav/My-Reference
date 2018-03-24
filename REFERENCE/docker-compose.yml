@@ -1,0 +1,130 @@
+version: '3'
+
+services:
+
+    cc-postgresdb:
+        image: postgres:9.5
+        container_name: mypostgres
+        ports:
+            - 5432:5432
+        restart: always
+        volumes:
+            - /root/compliance_stack/postgres/dbscript.sql:/docker-entrypoint-initdb.d/dbscript.sql
+        environment:
+            POSTGRES_PASSWORD: tang3456
+            POSTGRESQL_DB: bloodhound
+            POSTGRESQL_USER: bloodhound
+            POSTGRESQL_PASS: bloodhound
+
+    cc-bloodhound:
+        build: ../bloodhound/bloodhound/
+        image: bloodhound
+        container_name: bloodhound
+        links:
+            - cc-postgresdb:db
+        depends_on:
+            - cc-postgresdb
+        ports:
+            - 8000:8000
+        restart: always
+
+    sar_ui:
+	build: ../sar_ui
+        image: sar_ui
+        container_name: sar_ui
+        ports:
+            - 80:3000
+        restart: always
+
+    cc-sar_ticket:
+        build: ../sar_ticket
+        image: sar_ticket
+        container_name: sar_ticket
+        ports:
+            - 3001:3000
+        restart: always
+
+    cc-sar_service:
+        build: ../sar_service/
+        image: sar_service
+        container_name: sar_service
+        links:
+            - cc-postgresdb:mydb
+            - dbapp:DB
+        ports:
+            - 5000:5000
+        restart: always
+        depends_on:
+            - cc-postgresdb
+            - dbapp
+            - cc-bloodhound
+
+    cc-sar_ui:
+	build: ../sar_ui
+        image: sar_ui
+        container_name: sar_ui
+        ports:
+            - 80:3000
+        restart: always
+
+    cc-dpia:
+	build: ../dpia
+        image: dpia
+        container_name: dpia
+        ports:
+            - 5001:5001
+        restart: always
+
+    cc-email:
+        build: ../email_batch/EmailBatch
+        image: email
+        container_name: email
+	restart: always
+
+    dbapp:
+        image: mysql:latest
+        restart: always
+        volumes:
+            - db-volume:/var/lib/mysql
+        env_file:
+            - ../cc_lms/cc_lms/LMS-Moodle/setup/moodle_variables.env
+        ports:
+            - 3306:3306
+        networks:
+            - backendDB
+        deploy:
+            replicas: 1
+            restart_policy:
+                condition: any
+
+    moodleapp:
+	build: ../cc_lms/cc_lms/LMS-Moodle
+        image: lms
+        links:
+            - dbapp:DB
+        depends_on:
+            - dbapp
+        restart: always
+        volumes:
+            - moodleapp-data:/var/moodledata
+        ports:
+            - 3000:80
+            - 443:443
+        env_file:
+            - ../cc_lms/cc_lms/LMS-Moodle/setup/moodle_variables.env
+        networks:
+            - backendDB
+            - frontendWEB
+        deploy:
+            replicas: 1
+            restart_policy:
+                condition: any
+
+volumes:
+    db-volume:
+    moodleapp-data:
+
+networks:
+    backendDB:
+    frontendWEB:
+

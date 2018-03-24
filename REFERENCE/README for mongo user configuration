@@ -1,0 +1,58 @@
+-----CREATING ROLES IN MONGODB------
+
+==>step:1  - enter into mongo shell
+ 
+ mongo --shell
+
+==>step:2  - to login into user
+
+ db.auth("<username>","<password>")
+
+==>step:3  - enter into root user
+
+  use <adminuser>  
+
+==>step:4  - create user for database
+
+  db.createUser({ user: 'aerobit', pwd: 'aerobit', roles: [ { role: "customrole2", db: "aerobit" } ] });
+
+==>step:5  - enter into db wher we are going to set the custom roles
+
+use <name>
+
+
+==>step:6 -create custom role
+
+db.createRole(
+   {
+     role: "customrole2",
+     privileges: [
+       
+      {
+       resource: { db: "aerobit" , collection: "" },
+       actions: [ "collStats", "convertToCapped" ,"createCollection", "dbHash", "dbStats", "createIndex",
+                   "dropIndex", "find", "insert", "killCursors", "listIndexes", "listCollections", "remove", "renameCollectionSameDB", 
+                   "update" ]
+      },
+     ],
+     roles:
+     [
+          { role: "read", db: "aerobit" },
+          
+     ],
+   }
+)
+
+
+==>step:6 - To grant the user roles
+
+db.grantRolesToUser(
+    "aerobit",
+    [
+      { role: "customrole1", db: "aerobit" }
+    ]
+)
+
+
+
+

@@ -1,0 +1,171 @@
+DOCKER COMMANDS
+
+****************************************************
+docker run --name wordpress -e WORDPRESS_DB_HOST=213.251.186.108:3306 -e WORDPRESS_DB_PASSWORD=moodle -p 8030:80 -d wordpress
+*****************************************************
+*****************************************************
+docker run --name mongodb -e MONGODB_USERNAME=aerobit -e MONGODB_PASSWORD=aerobit -e MONGODB_DATABASE=aerobit -d -p 27017:27017 bitnami/mongodb:latest
+**************************************************
+
+1.TO BUILD IMAGE
+==>docker build -t <your Docker filename> .
+
+2.TO LOAD IMAGE IN CONTAINER AND MAKE IT TO RUN
+==>docker run --name my_app -h my_app -d -p 3000:3000 my_app																																																																																														
+
+3.TO LIST OUT THE APPLICATION THAT HAS BEEN UP IN CONTAINER
+==>docker ps -a
+
+4.TO STOP THE APPLICATION THAT RUNNING IN THE CONTAINER
+==>docker stop <image_name>
+
+5.TO UNTAG/REMOVE BUILDED IMAGE
+==>docker rmi -f <image_name>
+
+6.TO LISTOUT BUILDED IMAGES
+==>docker images
+
+7.TO CREATE DOCKERFILE
+
+==>vi Dockerfile
+==>:wq
+
+8.TO REMOVE THE APPLICATION IN THE CONTAINER
+==>docker rm -f <image_name>
+
+9.TO UP THE DOCKER COMPOSE 
+==>docker-compose up -d
+
+10.TO STOP THE DOCKER COMPOSE 
+==>docker-compose stop
+
+11.To get inside to the container
+==>docker exec -ti <containername> bash
+
+12.git karakan my default profile
+
+name:vijayRag
+Email:vijayaraghavan.k@10decoders.in
+
+{"database":{"password":"XAw6kdnd","dialect":"mysql","name":"TimeTracker","host":"localhost","username":"root"}}
+
+
+
+mongo db atlas credentials:
+email:vijayaraghavan.k@10decoders.in
+password:Abc@12345
+
+
+
+cluster:
+username:admin
+password:rootadmin
+
+
+-------to find netstat of port:----------
+sudo netstat -nap | grep 2181
+
+chmod 600 GeppettoStack-khali.pem
+
+
+
+sudo docker container run -ti --rm --name zammad -p 80:80 zammad/zammad
+
+
+
+
+for redhat instance :
+
+
+1.yum update -y
+2.usermod -aG <username>
+
+
+for getting access to computer
+sudo chmod -R 777 /var/www/html
+
+for login to the instance by having pemfile
+
+ssh -i <your filename.pem> <username>@<ipAddress>
+
+
+
+
+to stop or start mysql :
+
+sudo /etc/init.d/mysql stop
+
+
+digital ocean credentials:
+
+instance credentials:
+username:root
+password:tang@3456
+
+------some yum commands:-------
+ refer:"https://www.centos.org/docs/5/html/5.1/Deployment_Guide/s1-yum-useful-commands.html"
+
+-------digital ocean credentials:--------
+
+ssh root@159.65.185.130
+pass:tang@3456
+
+inside domain,,,,click enable
+
+----------------------------------------
+
+cmd to change the text in file 
+
+1.sed -i 's/<text to find>/<text to replace>/g' deploy.sh
+
+cmd to check whether the app is installed or not
+
+2.if ! rpm -qa | grep -qw glibc-static; then
+    yum install glibc-static
+fi
+
+3.github credentials
+
+username:raghavan9428@gmail.com
+password:raghavan1252
+
+azure credentials
+*******************************************
+
+username:jonathan@compliancecompendium.co.uk
+
+passwd:102rDrDnF04!
+
+*******************************************
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+azure2 credentials
+pass:Meesa@211218
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+
+***********************************************
+
+E: flAbsPath on /var/lib/dpkg/status failed - realpath (2: No such file or directory)
+E: Could not open file  - open (2: No such file or directory)
+E: Problem opening 
+E: The package lists or status file could not be parsed or opened.
+
+
+sol:
+ 
+sudo touch /var/lib/dpkg/status
+
+******************************************
+---Dockerfile to run jar application-----
+From java
+ADD jar/EmailBatch.jar /
+ADD resources /resources/
+CMD java -jar EmailBatch.jar
+----------------------------------
+**************************************
+
+

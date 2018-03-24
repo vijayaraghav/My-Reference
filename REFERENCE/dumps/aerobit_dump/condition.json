@@ -1,0 +1,1 @@
+{"__v":0,"_id":{"$oid":"5aaf61265f7cd3002149df4c"},"active":true,"clinicalStatus":"ACTIVE","createdAt":{"$date":"2018-03-19T07:05:10.768Z"},"resourceType":"Condition","text":{"div":"<div></div>","status":"generated"},"type":{"symptom":{"name":"Pollution"}},"updatedAt":{"$date":"2018-03-19T07:05:10.768Z"},"verificationStatus":"CONFIRMED"}

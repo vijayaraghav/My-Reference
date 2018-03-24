@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+
+#    haproxy:
+#        build: ../haproxy
+#        image: haproxy:latest
+#        container_name: cchaproxy
+#        links:
+#            - cc-sar_ui:khalisar_ui
+#            #- cc-devmoodle:devmoodle
+#            - cc-sarservice:sarservice
+#        entrypoint: haproxy -d -f /etc/haproxy/haproxy.cfg
+#        ports:
+#            - 80:80
+#            - 443:443
+#        restart: always
+
+#    cc-devdb:
+#        image: mysql:5.5
+#        container_name: devdb
+#        restart: always
+#        ports:
+#            - 3306:3306
+#        volumes:
+#            - db-volume:/var/lib/mysql
+#        env_file:
+#            - ../cc_lms/LMS-Moodle/setup/moodle_variables.env
+#        networks:
+#            - backendDB
+#        deploy:
+#            replicas: 1
+#            restart_policy:
+#                condition: any
+
+#    cc-devmoodle:
+#        build: ../cc_lms/LMS-Moodle
+#        container_name: devmoodle
+#        links:
+#            - cc-devdb:DB
+#        depends_on:
+#            - cc-devdb
+#        restart: always
+#        volumes:
+#            - moodleapp-data:/var/moodledata
+#        ports:
+#            - 8080:80
+#        env_file:
+#            - ../cc_lms/LMS-Moodle/setup/moodle_variables.env
+#        networks:
+#            - backendDB
+#            - frontendWEB
+#        deploy:
+#            replicas: 1
+#            restart_policy:
+#                condition: any
+

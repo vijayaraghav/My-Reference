@@ -1,0 +1,618 @@
+class DevelopmentConfig(BaseConfig):
+    """Development configuration."""
+    DEBUG = True
+    BCRYPT_LOG_ROUNDS = 4
+    WTF_CSRF_ENABLED = False
+    #SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/bloodhound'.format(
+    #    os.path.join(basedir, 'dev.db'))
+    SQLALCHEMY_DATABASE_URI = 'postgresql://bloodhound:bloodhound@35.171.68.58/bloodhound'.format(
+        os.path.join(basedir, 'dev.db'))
+    SQLALCHEMY_BINDS = {
+        'moodle': 'mysql+pymysql://moodle:moodle@35.169.62.69:3306/moodle'
+        # 'moodle': 'mysql+pymysql://root:root@localhost:3306/moodle'
+    }
+    DEBUG_TB_ENABLED = True
+    JWT_SECRET_KEY = 'another_super_awesome_secret_stuff_yo.'
+    SECRET_KEY = 'not-so-super-secret'
+
+
+export const BaseUrl = {
+
+    //dev Url
+    // RestUrl: 'http://localhost:5000/',
+
+    //lms Url
+    LMSUrl:'http://35.169.62.69:3000/login/index.php',
+
+    //Dpia Url
+    DPIARestUrl: 'http://35.169.62.69:5001/',
+
+    //prod Url
+    RestUrl: "http://35.169.62.69:5000/"
+
+};
+
+*******************************************************
+
+# project/server/config.py
+import logging
+import sqlalchemy
+import os
+basedir = os.path.abspath(os.path.dirname(__file__))
+logging.basicConfig(filename='exampleSar.log', level=logging.INFO)
+logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
+engine = sqlalchemy.create_engine('postgresql://postgres:tang3456@35.169.62.69/bloodhound', echo=True)
+
+
+class BaseConfig(object):
+    """Base configuration."""
+    SECRET_KEY = '1d94e52c-1c89-4515-b87a-f48cf3cb7f0b'
+    SECURITY_PASSWORD_SALT = 'my-precious'
+    DEBUG = False
+    BCRYPT_LOG_ROUNDS = 13
+    WTF_CSRF_ENABLED = True
+    DEBUG_TB_ENABLED = False
+    DEBUG_TB_INTERCEPT_REDIRECTS = False
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    LOGGING_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    LOGGING_LOCATION = 'cc-service.log'
+    LOGGING_LEVEL = logging.DEBUG
+    UPLOAD_FOLDER = 'opt/SAR_Ticket_Creation/uploaded_file'
+    ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+    SECURITY_TOKEN_MAX_AGE = 60 * 30
+    SECURITY_CONFIRMABLE = False
+    STRIPE_SECRET_KEY = 'sk_test_KB4Sp4oDTWwoFVs7nRCghq19'
+    STRIPE_PUBLISHABLE_KEY = 'pk_test_8GFMVG84f1x5PZOkP0jW4TFQ'
+    BASE_URL = 'http://ccsstage.compliancecompendium.co.uk/'
+
+
+class DevelopmentConfig(BaseConfig):
+    """Development configuration."""
+    DEBUG = True
+    BCRYPT_LOG_ROUNDS = 4
+    WTF_CSRF_ENABLED = False
+    #SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/bloodhound'.format(
+    #    os.path.join(basedir, 'dev.db'))
+    SQLALCHEMY_DATABASE_URI = 'postgresql://bloodhound:bloodhound@35.172.38.77/bloodhound'.format(
+        os.path.join(basedir, 'dev.db'))
+    SQLALCHEMY_BINDS = {
+        'moodle': 'mysql+pymysql://moodle:moodle@35.169.62.69:3306/moodle'
+        # 'moodle': 'mysql+pymysql://root:root@localhost:3306/moodle'
+    }
+    DEBUG_TB_ENABLED = True
+    JWT_SECRET_KEY = 'another_super_awesome_secret_stuff_yo.'
+    SECRET_KEY = 'not-so-super-secret'
+
+
+class TestingConfig(BaseConfig):
+    """Testing configuration."""
+    DEBUG = True
+    TESTING = True
+    BCRYPT_LOG_ROUNDS = 4
+    WTF_CSRF_ENABLED = False
+#SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/bloodhound'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:tang3456@35.169.62.69/bloodhound'
+    DEBUG_TB_ENABLED = False
+    PRESERVE_CONTEXT_ON_EXCEPTION = False
+    JWT_SECRET_KEY = 'another_super_awesome_secret_stuff_yo.'
+    SECRET_KEY = 'not-so-super-secret'
+
+
+class ProductionConfig(BaseConfig):
+    """Production configuration."""
+    SECRET_KEY = 'my_precious'
+    DEBUG = False
+    #SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/bloodhound'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:tang3456@35.169.62.69/bloodhound'
+    DEBUG_TB_ENABLED = False
+    JWT_SECRET_KEY = 'another_super_awesome_secret_stuff_yo.'
+    SECRET_KEY = 'not-so-super-secret'
+
+
+************************************************************
+
+export const BaseUrl = {
+
+    //dev Url
+    // RestUrl: 'http://localhost:5000/',
+
+    DPIARestUrl: 'http://localhost:5001/',
+
+    //prod Url
+    RestUrl: "http://35.172.38.77:5000/"
+};
+
+*********************************************************
+
+
+export const BaseUrl = {
+
+    //dev Url
+    //RestUrl: 'http://localhost:5000/',
+
+    //lms Url
+    LMSUrl:'http://35.172.38.77:3000/login/index.php',
+
+    //Dpia Url
+
+      //DPIARestUrl: 'http://localhost:5001/',
+
+    DPIARestUrl: 'http://35.172.38.77:5001/',
+
+
+    //prod Url
+    RestUrl: "http://35.172.38.77:5000/",
+
+    BloodhoundURL: "http://35.172.38.77:8000/"
+
+};
+
+
+*************************************************************
+
+
+
+
+# project/server/config.py
+import logging
+import sqlalchemy
+import os
+basedir = os.path.abspath(os.path.dirname(__file__))
+logging.basicConfig(filename='exampleSar.log', level=logging.INFO)
+#logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
+engine = sqlalchemy.create_engine('postgresql://postgres:tang3456@35.169.62.69/bloodhound', echo=True)
+
+
+class BaseConfig(object):
+    """Base configuration."""
+    SECRET_KEY = '1d94e52c-1c89-4515-b87a-f48cf3cb7f0b'
+    SECURITY_PASSWORD_SALT = 'my-precious'
+    DEBUG = False
+    BCRYPT_LOG_ROUNDS = 13
+    WTF_CSRF_ENABLED = True
+    DEBUG_TB_ENABLED = False
+    DEBUG_TB_INTERCEPT_REDIRECTS = False
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    LOGGING_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    LOGGING_LOCATION = 'cc-service.log'
+    LOGGING_LEVEL = logging.DEBUG
+    UPLOAD_FOLDER = '/opt/SAR_Ticket_Creation/uploaded_file'
+    ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+    DEFAULT_COMPANY_NAME = " Compliance Compedium"
+    SECURITY_TOKEN_MAX_AGE = 60 * 30
+    SECURITY_CONFIRMABLE = False
+    STRIPE_SECRET_KEY = 'sk_test_KB4Sp4oDTWwoFVs7nRCghq19'
+    STRIPE_PUBLISHABLE_KEY = 'pk_test_8GFMVG84f1x5PZOkP0jW4TFQ'
+    BASE_URL = 'ccstest.compliancecompendium.co.uk'
+    SERVICE_URL = '35.169.62.69:5000'
+
+
+class DevelopmentConfig(BaseConfig):
+    """Development configuration."""
+    DEBUG = True
+    BCRYPT_LOG_ROUNDS = 4
+    WTF_CSRF_ENABLED = False
+    #SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/bloodhound'.format(
+    #    os.path.join(basedir, 'dev.db'))
+    SQLALCHEMY_DATABASE_URI = 'postgresql://bloodhound:bloodhound@mydb/bloodhound'.format(
+        os.path.join(basedir, 'dev.db'))
+    SQLALCHEMY_BINDS = {
+        'moodle': 'mysql+pymysql://moodle:moodle@35.169.62.69:3306/moodle'
+        # 'moodle': 'mysql+pymysql://root:root@localhost:3306/moodle'
+    }
+    DEBUG_TB_ENABLED = True
+    JWT_SECRET_KEY = 'another_super_awesome_secret_stuff_yo.'
+    SECRET_KEY = 'not-so-super-secret'
+
+
+class TestingConfig(BaseConfig):
+    """Testing configuration."""
+    DEBUG = True
+    TESTING = True
+    BCRYPT_LOG_ROUNDS = 4
+    WTF_CSRF_ENABLED = False
+    #SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/bloodhound'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:tang3456@35.169.62.69/bloodhound'
+    DEBUG_TB_ENABLED = False
+    PRESERVE_CONTEXT_ON_EXCEPTION = False
+    JWT_SECRET_KEY = 'another_super_awesome_secret_stuff_yo.'
+    SECRET_KEY = 'not-so-super-secret'
+
+
+class ProductionConfig(BaseConfig):
+    """Production configuration."""
+    SECRET_KEY = 'my_precious'
+    DEBUG = False
+    #SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/bloodhound'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:tang3456@35.169.62.69/bloodhound'
+    DEBUG_TB_ENABLED = False
+    JWT_SECRET_KEY = 'another_super_awesome_secret_stuff_yo.'
+    SECRET_KEY = 'not-so-super-secret'
+
+*************************************************************************************
+
+# project/server/config.py
+import logging
+import sqlalchemy
+import os
+basedir = os.path.abspath(os.path.dirname(__file__))
+logging.basicConfig(filename='exampleSar.log', level=logging.INFO)
+logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
+engine = sqlalchemy.create_engine('postgresql://postgres:tang3456@35.169.62.69/bloodhound', echo=True)
+
+
+class BaseConfig(object):
+    """Base configuration."""
+    SECRET_KEY = '1d94e52c-1c89-4515-b87a-f48cf3cb7f0b'
+    SECURITY_PASSWORD_SALT = 'my-precious'
+    DEBUG = False
+    BCRYPT_LOG_ROUNDS = 13
+    WTF_CSRF_ENABLED = True
+    DEBUG_TB_ENABLED = False
+    DEBUG_TB_INTERCEPT_REDIRECTS = False
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    LOGGING_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    LOGGING_LOCATION = 'cc-service.log'
+    LOGGING_LEVEL = logging.DEBUG
+    UPLOAD_FOLDER = '/opt/SAR_Ticket_Creation/uploaded_file'
+    ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+    DEFAULT_COMPANY_NAME = " Compliance Compedium"
+    SECURITY_TOKEN_MAX_AGE = 60 * 30
+    SECURITY_CONFIRMABLE = False
+    STRIPE_SECRET_KEY = 'sk_test_KB4Sp4oDTWwoFVs7nRCghq19'
+    STRIPE_PUBLISHABLE_KEY = 'pk_test_8GFMVG84f1x5PZOkP0jW4TFQ'
+    BASE_URL = 'ccsstage.compliancecompendium.co.uk'
+    SERVICE_URL = '35.172.38.77:5000'
+
+class DevelopmentConfig(BaseConfig):
+    """Development configuration."""
+    DEBUG = True
+    BCRYPT_LOG_ROUNDS = 4
+    WTF_CSRF_ENABLED = False
+    #SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/bloodhound'.format(
+    #    os.path.join(basedir, 'dev.db'))
+    SQLALCHEMY_DATABASE_URI = 'postgresql://bloodhound:bloodhound@mydb/bloodhound'.format(
+        os.path.join(basedir, 'dev.db'))
+    SQLALCHEMY_BINDS = {
+        'moodle': 'mysql+pymysql://moodle:moodle@35.172.38.77:3306/moodle'
+        # 'moodle': 'mysql+pymysql://root:root@localhost:3306/moodle'
+    }
+    DEBUG_TB_ENABLED = True
+    JWT_SECRET_KEY = 'another_super_awesome_secret_stuff_yo.'
+    SECRET_KEY = 'not-so-super-secret'
+
+class TestingConfig(BaseConfig):
+    """Testing configuration."""
+    DEBUG = True
+    TESTING = True
+    BCRYPT_LOG_ROUNDS = 4
+    WTF_CSRF_ENABLED = False
+    #SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/bloodhound'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:tang3456@35.169.62.69/bloodhound'
+    DEBUG_TB_ENABLED = False
+    PRESERVE_CONTEXT_ON_EXCEPTION = False
+    JWT_SECRET_KEY = 'another_super_awesome_secret_stuff_yo.'
+    SECRET_KEY = 'not-so-super-secret'
+
+class ProductionConfig(BaseConfig):
+    """Production configuration."""
+    SECRET_KEY = 'my_precious'
+    DEBUG = False
+    #SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/bloodhound'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:tang3456@35.169.62.69/bloodhound'
+    DEBUG_TB_ENABLED = False
+    JWT_SECRET_KEY = 'another_super_awesome_secret_stuff_yo.'
+    SECRET_KEY = 'not-so-super-secret'
+
+##########################################################################
+
+export const BaseUrl = {
+
+    //dev Url
+    //RestUrl: 'http://localhost:5000/',
+
+    //lms Url
+    LMSUrl:'http://35.172.38.77:8080/moodle/login/index.php',
+
+    //Dpia Url
+    DPIARestUrl: 'http://35.172.38.77:5001/',
+
+    //prod Url
+    RestUrl: "http://35.172.38.77:5000/",
+
+    BloodhoundURL: "http://35.172.38.77:8000/"
+
+};
+
+###################################################
+export const BaseUrl = {
+
+    //local Url
+    //RestUrl: 'http://localhost:5000/'
+
+    //dev Url
+    RestUrl: "http://35.172.38.77:5000/"
+
+
+
+};
+
+###################################################
+
+# project/server/config.py
+import logging
+import os
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+
+class BaseConfig(object):
+    """Base configuration."""
+    SECRET_KEY = '1d94e52c-1c89-4515-b87a-f48cf3cb7f0b'
+    SECURITY_PASSWORD_SALT = 'my-precious'
+    DEBUG = False
+    BCRYPT_LOG_ROUNDS = 13
+    WTF_CSRF_ENABLED = True
+    DEBUG_TB_ENABLED = False
+    DEBUG_TB_INTERCEPT_REDIRECTS = False
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    LOGGING_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    LOGGING_LOCATION = 'cc-service.log'
+    LOGGING_LEVEL = logging.DEBUG
+    UPLOAD_FOLDER = '/home/ten-decoders/Documents/flask-skeleton/uploads'
+    ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+    SECURITY_TOKEN_MAX_AGE = 60 * 30
+    SECURITY_CONFIRMABLE = False
+    STRIPE_SECRET_KEY = 'sk_test_KB4Sp4oDTWwoFVs7nRCghq19'
+    STRIPE_PUBLISHABLE_KEY = 'pk_test_8GFMVG84f1x5PZOkP0jW4TFQ'
+
+class DevelopmentConfig(BaseConfig):
+    """Development configuration."""
+    DEBUG = True
+    BCRYPT_LOG_ROUNDS = 4
+    WTF_CSRF_ENABLED = False
+    #SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/bloodhound'.format(
+    #   os.path.join(basedir, 'dev.db'))
+    SQLALCHEMY_DATABASE_URI = 'postgresql://bloodhound:bloodhound@35.169.62.69/bloodhound'.format(
+         os.path.join(basedir, 'dev.db'))
+    DEBUG_TB_ENABLED = True
+    JWT_SECRET_KEY = 'another_super_awesome_secret_stuff_yo.'
+    SECRET_KEY = 'not-so-super-secret'
+
+class TestingConfig(BaseConfig):
+    """Testing configuration."""
+    DEBUG = True
+    TESTING = True
+    BCRYPT_LOG_ROUNDS = 4
+    WTF_CSRF_ENABLED = False
+    #SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/bloodhound'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:tang3456@35.169.62.69/bloodhound'
+    DEBUG_TB_ENABLED = False
+    PRESERVE_CONTEXT_ON_EXCEPTION = False
+    JWT_SECRET_KEY = 'another_super_awesome_secret_stuff_yo.'
+    SECRET_KEY = 'not-so-super-secret'
+
+class ProductionConfig(BaseConfig):
+    """Production configuration."""
+    SECRET_KEY = 'my_precious'
+    DEBUG = False
+    #SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/bloodhound'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:tang3456@35.169.62.69/bloodhound'
+    DEBUG_TB_ENABLED = False
+    JWT_SECRET_KEY = 'another_super_awesome_secret_stuff_yo.'
+    SECRET_KEY = 'not-so-super-secret'
+
+
+
+#######################################################################
+
+
+# manage.py
+
+
+import os
+import unittest
+import coverage
+from flask import Flask
+from flask_jwt_extended import JWTManager
+from flask_restplus import Api
+from flask_script import Manager, Server
+from flask_migrate import Migrate, MigrateCommand
+
+from project.server.models.Projects import Projects
+from project.server.models.Assessment import Assessment
+from project.server.models.Section import Section
+from project.server.models.Question import Question
+from project.server.models.Attachments import Attachments
+from project.server.models.Answer import Answer
+from project.server.models.Action import Action
+from project.server.models.DPIAudit import DpiAudit
+from project.server.models.ActionAdditionalInfo import ActionAdditionalInfo
+from project.server.models.SectionAssigned import SectionAssigned
+from project.server.models.QuesAssigned import QuesAssigned
+from project.server.models.AssessmentAssigned import AssessmentAssigned
+
+app = Flask(__name__)
+app.config['JWT_SECRET_KEY'] = 'super-secret'  # Change this!
+jwt = JWTManager(app)
+api = Api()
+
+# This is where the duck typing magic comes in
+jwt._set_error_handler_callbacks(api)
+COV = coverage.coverage(
+    branch=True,
+    include='project/*',
+    omit=[
+	'project/tests/*',
+        'project/server/config.py',
+        'project/server/*/__init__.py'
+    ]
+)
+COV.start()
+
+from project.server import create_app, db, models
+app = create_app()
+
+migrate = Migrate(app, db)
+manager = Manager(app)
+
+# migrations
+manager.add_command('db', MigrateCommand)
+
+manager.add_command("runserver", Server(
+    use_debugger = True,
+    use_reloader = True,
+    host = '0.0.0.0',
+    port='5001') )
+
+@manager.command
+def test():
+    """Runs the unit tests without test coverage."""
+    # tests = unittest.TestLoader().discover('project/tests', pattern='test*.py')
+    # result = unittest.TextTestRunner(verbosity=2).run(tests)
+    # if result.wasSuccessful():
+    #     return 0
+    return 1
+
+@manager.command
+def cov():
+    """Runs the unit tests with coverage."""
+    # tests = unittest.TestLoader().discover('project/tests')
+    # result = unittest.TextTestRunner(verbosity=2).run(tests)
+    # if result.wasSuccessful():
+    #     COV.stop()
+    #     COV.save()
+    #     print('Coverage Summary:')
+    #     COV.report()
+    #     basedir = os.path.abspath(os.path.dirname(__file__))
+    #     covdir = os.path.join(basedir, 'tmp/coverage')
+    #     COV.html_report(directory=covdir)
+    #     print('HTML version: file://%s/index.html' % covdir)
+    #     COV.erase()
+    #     return 0
+    return 1
+
+@manager.command
+def create_db():
+    """Creates the db tables."""
+    db.create_all()
+
+################################################
+
+# project/server/config.py
+import logging
+import os
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+
+class BaseConfig(object):
+    """Base configuration."""
+    SECRET_KEY = '1d94e52c-1c89-4515-b87a-f48cf3cb7f0b'
+    SECURITY_PASSWORD_SALT = 'my-precious'
+    DEBUG = False
+    BCRYPT_LOG_ROUNDS = 13
+    WTF_CSRF_ENABLED = True
+    DEBUG_TB_ENABLED = False
+    DEBUG_TB_INTERCEPT_REDIRECTS = False
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    LOGGING_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    LOGGING_LOCATION = 'cc-service.log'
+    LOGGING_LEVEL = logging.DEBUG
+    UPLOAD_FOLDER = '/home/ten-decoders/Documents/flask-skeleton/uploads'
+    ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+    SECURITY_TOKEN_MAX_AGE = 60 * 30
+    SECURITY_CONFIRMABLE = False
+    STRIPE_SECRET_KEY = 'sk_test_KB4Sp4oDTWwoFVs7nRCghq19'
+    STRIPE_PUBLISHABLE_KEY = 'pk_test_8GFMVG84f1x5PZOkP0jW4TFQ'
+
+class DevelopmentConfig(BaseConfig):
+    """Development configuration."""
+    DEBUG = True
+    BCRYPT_LOG_ROUNDS = 4
+    WTF_CSRF_ENABLED = False
+    # SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/bloodhound'.format(
+    #    os.path.join(basedir, 'dev.db'))
+    SQLALCHEMY_DATABASE_URI = 'postgresql://bloodhound:bloodhound@35.172.38.77/bloodhound'.format(
+        os.path.join(basedir, 'dev.db'))
+    DEBUG_TB_ENABLED = True
+    JWT_SECRET_KEY = 'another_super_awesome_secret_stuff_yo.'
+    SECRET_KEY = 'not-so-super-secret'
+
+
+class TestingConfig(BaseConfig):
+    """Testing configuration."""
+    DEBUG = True
+    TESTING = True
+    BCRYPT_LOG_ROUNDS = 4
+    WTF_CSRF_ENABLED = False
+    #SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/bloodhound'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:tang3456@35.169.62.69/bloodhound'
+    DEBUG_TB_ENABLED = False
+    PRESERVE_CONTEXT_ON_EXCEPTION = False
+    JWT_SECRET_KEY = 'another_super_awesome_secret_stuff_yo.'
+    SECRET_KEY = 'not-so-super-secret'
+
+
+class ProductionConfig(BaseConfig):
+    """Production configuration."""
+    SECRET_KEY = 'my_precious'
+    DEBUG = False
+    #SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/bloodhound'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:tang3456@35.169.62.69/bloodhound'
+    DEBUG_TB_ENABLED = False
+    JWT_SECRET_KEY = 'another_super_awesome_secret_stuff_yo.'
+    SECRET_KEY = 'not-so-super-secret'
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+    dbapp:
+        image: mysql:latest
+        restart: always
+        volumes:
+            - db-volume:/var/lib/mysql
+        env_file:
+            - setup/moodle_variables.env
+        ports:
+            - 3306:3306
+        networks:
+            - backendDB
+        deploy:
+            replicas: 1
+            restart_policy:
+                condition: any
+    moodleapp:
+	build: ../cc_lms/cc_lms/LMS-Moodle
+        image: lms
+        links:
+            - dbapp:DB
+        depends_on:
+            - dbapp
+        restart: always
+        volumes:
+            - moodleapp-data:/var/moodledata
+        ports:
+            - 3000:80
+            - 443:443
+        env_file:
+            - setup/moodle_variables.env
+        networks:
+	    - backendDB
+            - frontendWEB
+        deploy:
+            replicas: 1
+            restart_policy:
+                condition: any
+
+volumes:
+    db-volume:
+    moodleapp-data:
+
+networks:
+    backendDB:
+    frontendWEB:
+
+
+
+
+
+
+
